@@ -1,0 +1,133 @@
+[page-type="project"]
+	cursor none
+	.slider
+		height 100vh
+		hideselect()
+		.flickity-slider
+			transform none !important
+		.slide
+			height 100%
+			width 100%
+			display inline-flex
+			justify-content center
+			left 0 !important
+			opacity 0
+			// transition opacity 600ms ease
+			// visibility hidden
+			.content
+				height 100%
+				width 100%
+				display flex
+				justify-content center
+				align-items center
+				img
+					width 100%
+					height 100%
+					object-fit cover
+					font-family "object-fit: cover"
+				&.contain
+					padding 2.8rem
+					img
+						object-fit contain
+						font-family "object-fit: contain"
+				+below($md)
+					padding 2.8rem
+					img, video
+						object-fit contain
+			.content.video
+				width 100%
+				.plyr--ready
+					width 100%
+					height 100%
+				&.contain
+					padding 2.8rem
+					video
+						object-fit contain
+				video
+					width 100%
+					height 100%
+					object-fit cover
+		.slide.is-selected
+			// visibility visible
+			opacity 1
+			z-index 1
+		.flickity-prev-next-button
+			cursor none !important
+			top 0
+			height 100%
+			width 50%
+			margin-top 0
+			background transparent
+			padding 0
+			transform(none)
+			border none
+			border-radius 0
+			z-index 10
+			+below($md)
+				display none
+			svg
+				display none
+			&.previous
+				left 0
+			&.next
+				right 0
+			&[disabled]
+				display none
+		#mouse-nav
+			align()
+			position fixed
+			top 0
+			left 0
+			color $secondary
+			z-index 300
+			white-space nowrap
+			cursor none
+			pointer-events none
+			display none
+			&::before
+				align()
+				pointer-events none
+		&[data-media="video"]:not(.nav-hover)
+			#mouse-nav
+				&::before
+					content 'Play'
+			&.pause
+				#mouse-nav::before
+					content 'Pause'
+			&.loading
+				#mouse-nav::before
+					content 'Loading'
+		&[data-media="video"]
+			.flickity-prev-next-button
+				width 15%
+			.plyr__controls
+				cursor auto
+				+below($md)
+					display none
+			.plyr--stopped
+				.plyr__controls
+					opacity 0
+		&[data-media="image"], &.nav-hover
+			&.left
+				#mouse-nav::before
+					content 'Prev'
+			&.right
+				#mouse-nav::before
+					content 'Next'
+		&:hover
+			#mouse-nav
+				+above($md)
+					display block
+	#slide-description
+		text-align center
+		padding 0.5em
+		position fixed
+		bottom 0
+		left 0
+		width 100%
+		z-index 100
+		display inline-flex
+		justify-content center
+		p
+			margin 0
+		
