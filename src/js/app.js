@@ -34,7 +34,7 @@ $(function() {
           if (slider && e.keyCode === 39) slider.next();
           if (slider && e.keyCode === 37) slider.previous();
         });
-        $(window).load(function() {
+        $(window).on('load', function() {
           $(".loader").fadeOut(300);
         });
       });
@@ -125,7 +125,7 @@ $(function() {
         slider = new Flickity(slider, {
           cellSelector: '.slide',
           imagesLoaded: true,
-          lazyLoad: 2,
+          lazyLoad: 1,
           setGallerySize: false,
           accessibility: false,
           wrapAround: true,
