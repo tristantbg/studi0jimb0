@@ -57,7 +57,10 @@
 			</div>
 		<?php else: ?>
 			<div class="content image <?= $image->contentSize() ?>">
-				<img class="media lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+				<img class="media lazy <?php e($key == 0, 'lazyload') ?>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+				<?php if($key == 0): ?>
+				src="<?= $image->width(1500)->url() ?>" 
+				<?php endif ?>
 				data-src="<?= $image->width(1500)->url() ?>" 
 				<?php 
 				$srcset = '';

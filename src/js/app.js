@@ -176,7 +176,11 @@ $(function() {
           if (!cellElement || cellElement.getAttribute('data-media') == "video" && !slider.element.classList.contains('nav-hover')) {
             return;
           } else {
-            slider.next();
+            if (slider.element.classList.contains('left')) {
+              slider.previous();
+            } else {
+              slider.next();
+            }
           }
         });
         if (vids.length > 0) {
